@@ -15,7 +15,6 @@ apt-get install apt-transport-https software-properties-common -y
 sudo apt-add-repository ppa:ubuntu-mate-dev/ppa
 sudo apt-add-repository ppa:ubuntu-mate-dev/trusty-mate
 apt-get update -y
-apt-get install x-window-system-core -y
 apt-get install ubuntu-mate-core ubuntu-mate-desktop locales vim -y
 echo '# This file lists locales that you wish to have built. You can find a list
 # of valid supported locales at /usr/share/i18n/SUPPORTED, and you can add
