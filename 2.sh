@@ -1,30 +1,8 @@
 check_system() {
-    if [[ "${ID}" == "centos" && ${VERSION_ID} -ge 7 ]]; then
-        echo -e "${OK} ${GreenBG} 当前系统为 Centos ${VERSION_ID} ${VERSION} ${Font}"
-        INS="yum"
-    elif [[ "${ID}" == "debian" && ${VERSION_ID} -ge 8 ]]; then
-        echo -e "${OK} ${GreenBG} 当前系统为 Debian ${VERSION_ID} ${VERSION} ${Font}"
-        INS="apt"
-        $INS update
-        ## 添加 Nginx apt源
-    elif [[ "${ID}" == "ubuntu" && $(echo "${VERSION_ID}" | cut -d '.' -f1) -ge 16 ]]; then
-        echo -e "${OK} ${GreenBG} 当前系统为 Ubuntu ${VERSION_ID} ${UBUNTU_CODENAME} ${Font}"
-        INS="apt"
-        $INS update
-    else
-        echo -e "${Error} ${RedBG} 当前系统为 ${ID} ${VERSION_ID} 不在支持的系统列表内，安装中断 ${Font}"
-        exit 1
-    fi
+    INS="apt"
+    $INS update
 
     $INS install dbus
-
-    systemctl stop firewalld
-    systemctl disable firewalld
-    echo -e "${OK} ${GreenBG} firewalld 已关闭 ${Font}"
-
-    systemctl stop ufw
-    systemctl disable ufw
-    echo -e "${OK} ${GreenBG} ufw 已关闭 ${Font}"
 }
 
 domain_check() {
