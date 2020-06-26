@@ -1,10 +1,3 @@
-check_system() {
-    INS="apt"
-    $INS update
-
-    $INS install dbus
-}
-
 domain_check() {
     read -rp "请输入你的域名信息(eg:www.wulabing.com):" domain
     domain_ip=$(ping "${domain}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
@@ -98,7 +91,6 @@ ssl_install() {
 }
 
 install_v2ray_ws_tls() {
-	check_system
     domain_check
     ssl_judge_and_install
 }
